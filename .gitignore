@@ -1,0 +1,50 @@
+# === Python / Django ===
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.env
+venv/
+env/
+db.sqlite3
+media/
+
+# === Flutter ===
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+*.lock
+
+# === Android ===
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# === iOS / macOS ===
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/build/
+macos/Flutter/Flutter.framework
+macos/Flutter/Flutter.podspec
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Pods/
+macos/build/
+
+# === Web ===
+web/.dart_tool/
+web/build/
+
+# === VS Code ===
+.vscode/
+
+# === System Files ===
+.DS_Store
+Thumbs.db
