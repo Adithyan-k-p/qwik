@@ -1,41 +1,42 @@
 ```markdown
 # 🌟 Qwik – Ephemeral Social Media Platform
 
-Qwik is a cross-platform social media app that empowers users to share spontaneous moments—photos, videos, or status updates—that disappear after 24 hours. Inspired by platforms like Instagram and Snapchat, Qwik prioritizes **authenticity**, **privacy**, and **real-time interaction** in a world of curated content.
+**Qwik** is a cross-platform social media app that empowers users to share spontaneous moments — photos, videos, or status updates — that automatically disappear after 24 hours. Inspired by platforms like Instagram and Snapchat, Qwik prioritizes **authenticity**, **privacy**, and **real-time interaction** in a world dominated by curated content.
 
-For detailed project requirements, see [PRD.md](docs/PRD.md). For MVP specifics, check [MVP.md](docs/MVP.md).
+📄 For detailed requirements, see [docs/PRD.md](docs/PRD.md)  
+📦 For MVP scope, check [docs/MVP.md](docs/MVP.md)
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- 📸 **Ephemeral Posts**: Share “Blinks” (photos/videos/status) that auto-delete after 24 hours.
-- 🎭 **Mood & Moment Tags**: Tag your posts with moods like happy, chill, or excited.
+- 📸 **Ephemeral Posts**: Share “Blinks” that vanish after 24 hours.
+- 🎭 **Mood & Moment Tags**: Add emotional context to your posts.
 - 💬 **Real-Time Chat**: One-to-one messaging with seen status and typing indicators.
-- 😍 **Reactions & Comments**: Express yourself with emoji reactions and comments.
+- 😍 **Reactions & Comments**: Express yourself with emojis and comments.
 - 🔔 **Smart Notifications**: Get notified only when it matters.
-- 🔐 **Privacy Controls**: Choose who sees your content—public, friends, or close circle.
-- 🛡️ **Admin Panel**: Manage users, moderate content, and view analytics.
+- 🔐 **Privacy Controls**: Choose your audience — public, friends, or close circle.
+- 🛡️ **Admin Panel**: Moderate content, manage users, and view reports.
 
 ---
 
 ## 🧱 Tech Stack
 
 | Layer         | Technology                        |
-| ------------- | --------------------------------- |
+|---------------|-----------------------------------|
 | Frontend      | Flutter (Android, iOS, Web)       |
 | Backend       | Django + Django REST Framework    |
 | Database      | PostgreSQL                        |
 | Real-Time     | Django Channels + Redis           |
 | Media Storage | Cloudinary / AWS S3               |
-| Auth          | JWT (SimpleJWT)                   |
-| Notifications | Firebase Cloud Messaging (optional) |
+| Authentication| JWT (SimpleJWT)                   |
+| Notifications | Firebase Cloud Messaging (optional)|
 
 ---
 
 ## 📁 Project Structure
 
-```
+```text
 qwik/
 ├── backend/       # Django backend with REST APIs and real-time features
 ├── frontend/      # Flutter frontend for cross-platform app
@@ -46,14 +47,6 @@ qwik/
 ---
 
 ## 🛠️ Getting Started
-
-### Prerequisites
-
-- **Python 3.8+** for backend
-- **Flutter SDK** for frontend
-- **PostgreSQL** database
-- **Redis** for real-time messaging (optional for MVP)
-- **Git** for version control
 
 ### 🔧 Backend Setup
 
@@ -66,6 +59,7 @@ qwik/
    ```bash
    python -m venv env
    env\Scripts\activate  # On Windows
+   source env/bin/activate  # On macOS/Linux
    ```
 
 3. Install dependencies:
@@ -82,6 +76,8 @@ qwik/
    ```bash
    python manage.py runserver
    ```
+
+---
 
 ### 📱 Frontend Setup
 
@@ -100,16 +96,19 @@ qwik/
    flutter run
    ```
 
-For web deployment, ensure Flutter web is enabled: `flutter config --enable-web`.
+💡 For web deployment:
+```bash
+flutter config --enable-web
+```
 
 ---
 
 ## 🧪 MVP Scope
 
-- ✅ User authentication (JWT-based)
-- ✅ Post ephemeral content with mood tags
+- ✅ JWT-based user authentication
+- ✅ Ephemeral post creation with mood tags
 - ✅ Feed from friends and public posts
-- ✅ 1-to-1 real-time chat
+- ✅ Real-time 1-to-1 chat
 - ✅ In-app notifications
 - ✅ Basic admin panel for moderation
 
@@ -128,26 +127,39 @@ For web deployment, ensure Flutter web is enabled: `flutter config --enable-web`
 
 ## 🤝 Contributing
 
-We welcome contributions! Please follow these steps:
+We welcome contributions! To get started:
 
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature/your-feature`.
-3. Commit your changes: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature/your-feature`.
-5. Open a pull request.
+1. Fork the repository
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Open a pull request
 
-For major changes, please open an issue first to discuss.
+For major changes, please open an issue first to discuss your ideas.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## ✨ Credits
 
-Built with ❤️ by [Adithyan](https://github.com/YOUR_USERNAME).  
+Built with ❤️ by [Adithyan](https://github.com/Adithyan-k-p)  
 Inspired by real-time, privacy-first social sharing platforms.
 ```
+
+---
+
+Let me know if you’d like me to generate the `PRD.md` and `MVP.md` files next, or scaffold your backend with models and APIs. You’re building something awesome — let’s keep Qwik moving!
