@@ -14,6 +14,12 @@ from pathlib import Path
 
 from datetime import timedelta 
 
+import os
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,14 +54,54 @@ INSTALLED_APPS = [
     'notifications',
 ]
 
+# --- Supabase Configuration ---
+# from .supabase_client import initialize_supabase_client
+
+# SUPABASE_CLIENT = initialize_supabase_client()
+# globals()['supabase'] = SUPABASE_CLIENT
+
+# --- SUPABASE CLIENT INITIALIZATION DEBUGGING ---
+from supabase import create_client 
+SUPABASE_URL = os.getenv('SUPABASE_URL')
+SUPABASE_ANON_KEY = os.getenv('SUPABASE_ANON_KEY')
+
+print("\n--- Supabase Key Check ---")
+print(f"URL loaded: {SUPABASE_URL}")
+print(f"Key loaded: {SUPABASE_ANON_KEY[:5] + '...' if SUPABASE_ANON_KEY else 'None'}")
+print("--------------------------\n")
+
+supabase = None
+from django.conf import settings
+try:
+    if SUPABASE_URL and SUPABASE_ANON_KEY:
+        print("Attempting to initialize Supabase client...")
+        _initialized_client = create_client(SUPABASE_URL, SUPABASE_ANON_KEY)
+        supabase = _initialized_client
+        settings.supabase = supabase
+        print("Supabase client initialized and attached to settings.")
+    else:
+        print("Supabase URL or ANON KEY missing. Cannot initialize client.")
+except Exception as e:
+    import traceback
+    print("\n!!!!!!!!!!!!!! SUPABASE CLIENT INIT FAILED !!!!!!!!!!!!!!")
+    print(f"EXCEPTION TYPE: {type(e).__name__}")
+    print(f"MESSAGE: {e}")
+    traceback.print_exc()
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
+    supabase = None
+    settings.supabase = None
+print(f"settings.supabase is {'set' if getattr(settings, 'supabase', None) else 'NOT set'}")
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
+
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": True,
@@ -98,8 +144,12 @@ WSGI_APPLICATION = "qwik_backend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'qwik_db'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
